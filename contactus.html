@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact MAWIZ Suites - Luxury Hotel Accommodations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B5A2B; /* Warm brown */
+            --secondary-color: #D4AF37; /* Gold */
+            --dark-color: #1A1A1A;
+            --light-color: #F8F8F8;
+            --accent-color: #5D4037; /* Dark brown */
+            --text-color: #333333;
+            --white: #FFFFFF;
+            --success-color: #4CAF50;
+            --error-color: #F44336;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        #branding h1 {
+            font-size: 2rem;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--dark-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        nav ul li.current a {
+            color: var(--primary-color);
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        nav ul li.current::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+
+        .booking-btn {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .booking-btn:hover {
+            background: var(--accent-color);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 90, 43, 0.3);
+        }
+
+        /* Contact Hero Section */
+        #contact-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1535827841776-24afc1e255ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 60vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #contact-hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, var(--white), transparent);
+            z-index: 1;
+        }
+
+        #contact-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        #contact-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease;
+        }
+
+        #contact-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        /* Contact Main Section */
+        #contact-main {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        #contact-main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, var(--white), transparent);
+            z-index: 1;
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-form {
+            flex: 1;
+            background: var(--white);
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transform: translateY(-80px);
+            animation: slideUp 1s ease;
+        }
+
+        .contact-form h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .contact-form h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--dark-color);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--light-color);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(139, 90, 43, 0.1);
+            background: var(--white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-group .error-message {
+            color: var(--error-color);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        .form-group.error input,
+        .form-group.error select,
+        .form-group.error textarea {
+            border-color: var(--error-color);
+        }
+
+        .form-group.success input,
+        .form-group.success select,
+        .form-group.success textarea {
+            border-color: var(--success-color);
+        }
+
+        .button_1 {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 35px;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .button_1:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 90, 43, 0.3);
+        }
+
+        .button_1 i {
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .button_1:hover i {
+            transform: translateX(5px);
+        }
+
+        .contact-info {
+            flex: 1;
+            padding: 30px 0;
+        }
+
+        .contact-info h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .contact-info h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+
+        .contact-method {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 35px;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .contact-method:hover {
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateX(5px);
+        }
+
+        .contact-method i {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-top: 5px;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .contact-method h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .contact-method p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .contact-method a {
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .contact-method a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        .social-links {
+            margin-top: 60px;
+            padding: 20px;
+        }
+
+        .social-links h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--light-color);
+            border-radius: 50%;
+            color: var(--dark-color);
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .social-icons a:hover {
+            background: var(--secondary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Location Map Section */
+        #location-map {
+            padding: 0 0 100px;
+            position: relative;
+        }
+
+        #location-map h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        #location-map h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            height: 500px;
+            position: relative;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(139, 90, 43, 0.1);
+            pointer-events: none;
+            z-index: 2;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: var(--white);
+            padding: 80px 0 0;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, var(--white), transparent);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-section {
+            padding: 20px;
+        }
+
+        .footer-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+
+        .footer-section p, .footer-section li {
+            margin-bottom: 15px;
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .footer-section ul li {
+            list-style: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li:hover {
+            transform: translateX(5px);
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-section .social-icons {
+            margin-top: 25px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px 0;
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-bottom a {
+            color: #ccc;
+            transition: all 0.3s ease;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(-80px);
+            }
+        }
+
+        /* Success Message */
+        #form-success {
+            display: none;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid var(--success-color);
+            color: var(--success-color);
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            text-align: center;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        #form-success i {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .contact-form,
+            .contact-info {
+                flex: none;
+                width: 100%;
+            }
+
+            .contact-form {
+                transform: translateY(-50px);
+            }
+
+            #contact-hero {
+                height: 50vh;
+                min-height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 0;
+            }
+
+            #branding h1 {
+                font-size: 1.8rem;
+            }
+
+            nav ul li {
+                margin-left: 15px;
+            }
+
+            .booking-btn {
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
+
+            #contact-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            #contact-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .contact-form {
+                padding: 40px 30px;
+            }
+
+            .map-container {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            #contact-hero {
+                height: 60vh;
+                min-height: 350px;
+            }
+
+            #contact-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .contact-form h2,
+            .contact-info h2,
+            #location-map h2 {
+                font-size: 1.8rem;
+            }
+            
+            .contact-method {
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px;
+            }
+
+            .contact-method i {
+                margin-top: 0;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+        }
+
+        /* Header scroll effect */
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">MAWIZ</span> Suites</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="aboutus.html">Rooms & Suites</a></li>
+                    <li><a href="dining.html">Dining</a></li>
+                    <li><a href="facilities.html">Facilities</a></li>
+                    <li class="current"><a href="contactus.html">Contact</a></li>
+                    <li><a href="login.html" class="booking-btn">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Hero Section -->
+    <section id="contact-hero">
+        <div class="container">
+            <h1>Contact MAWIZ Suites</h1>
+            <p>Our concierge team is available 24/7 to assist with reservations, special requests, or any inquiries about your stay</p>
+        </div>
+    </section>
+
+    <!-- Contact Main Section -->
+    <section id="contact-main">
+        <div class="container">
+            <div class="contact-container">
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <div id="form-success">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Thank You!</h3>
+                        <p>Your message has been sent successfully. Our team will respond within 24 hours.</p>
+                    </div>
+                    <h2>Send Us a Message</h2>
+                    <form id="hotel-contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name*</label>
+                            <input type="text" id="name" name="name" required placeholder="Your full name">
+                            <span class="error-message">Please enter your full name</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address*</label>
+                            <input type="email" id="email" name="email" required placeholder="Your email address">
+                            <span class="error-message">Please enter a valid email address</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+1 (___) ___-____">
+                            <span class="error-message">Please enter a valid phone number</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject*</label>
+                            <select id="subject" name="subject" required>
+                                <option value="" disabled selected>Select a subject</option>
+                                <option value="reservation">Reservation Inquiry</option>
+                                <option value="event">Event Planning</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="media">Media/Press</option>
+                                <option value="careers">Careers</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="error-message">Please select a subject</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message*</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="How can we assist you?"></textarea>
+                            <span class="error-message">Please enter your message</span>
+                        </div>
+                        
+                        <button type="submit" class="button_1">Send Message <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h2>Our Contact Details</h2>
+                    
+                    <div class="contact-method">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Address</h3>
+                            <p>123 Luxury Avenue<br>City Center, 10001<br>
+                            <a href="#" id="directions-link">Get Directions <i class="fas fa-arrow-right"></i></a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>Main: <a href="tel:+15551234567">+1 (555) 123-4567</a><br>
+                            Reservations: <a href="tel:+15551234568">+1 (555) 123-4568</a><br>
+                            Concierge: <a href="tel:+15551234569">+1 (555) 123-4569</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>General: <a href="mailto:info@mawizsuites.com">info@mawizsuites.com</a><br>
+                            Reservations: <a href="mailto:reservations@mawizsuites.com">reservations@mawizsuites.com</a><br>
+                            Events: <a href="mailto:events@mawizsuites.com">events@mawizsuites.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Opening Hours</h3>
+                            <p>Reception: 24/7<br>
+                            Concierge: 6:00 AM - 11:00 PM<br>
+                            Restaurant: 7:00 AM - 11:00 PM<br>
+                            Spa: 8:00 AM - 9:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <h3>Connect With Us</h3>
+                        <p>Follow us on social media for special offers and updates</p>
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Map Section -->
+    <section id="location-map">
+        <div class="container">
+            <h2>Our Location</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215256598687!2d-73.9878449241646!3d40.75798597138978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1689871234567!5m2!1sen!2sus" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <div class="map-overlay"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MAWIZ Suites</h3>
+                    <p>Experience unparalleled luxury in the heart of the city. MAWIZ Suites offers world-class accommodations, dining, and amenities for discerning travelers.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="homepage.html">Home</a></li>
+                        <li><a href="aboutus.html">Rooms & Suites</a></li>
+                        <li><a href="dining.html">Dining</a></li>
+                        <li><a href="facilities.html">Facilities</a></li>
+                        <li><a href="contactus.html">Contact</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="offers.html">Special Offers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="press.html">Press Center</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="blog.html">Travel Blog</a></li>
+                        <li><a href="sitemap.html">Site Map</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="cookies.html">Cookie Policy</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 MAWIZ Suites. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+                <p class="footer-credit">Designed with <i class="fas fa-heart" style="color: #ff6b6b;"></i> by MAWIZ Creative Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form validation
+        document.getElementById('hotel-contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+            
+            // Reset error states
+            document.querySelectorAll('.form-group').forEach(group => {
+                group.classList.remove('error', 'success');
+            });
+            
+            // Validate name
+            const name = document.getElementById('name');
+            if (!name.value.trim()) {
+                name.parentElement.classList.add('error');
+                isValid = false;
+            } else {
+                name.parentElement.classList.add('success');
+            }
+            
+            // Validate email
+            const email = document.getElementById('email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value)) {
+                email.parentElement.classList.add('error');
+                isValid = false;
+            } else {
+                email.parentElement.classList.add('success');
+            }
+            
+            // Validate subject
+            const subject = document.getElementById('subject');
+            if (!subject.value) {
+                subject.parentElement.classList.add('error');
+                isValid = false;
+            } else {
+                subject.parentElement.classList.add('success');
+            }
+            
+            // Validate message
+            const message = document.getElementById('message');
+            if (!message.value.trim()) {
+                message.parentElement.classList.add('error');
+                isValid = false;
+            } else {
+                message.parentElement.classList.add('success');
+            }
+            
+            // If form is valid, show success message
+            if (isValid) {
+                document.getElementById('form-success').style.display = 'block';
+                document.getElementById('hotel-contact-form').reset();
+                
+                // Scroll to success message
+                document.getElementById('form-success').scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Hide form and show success for demo purposes
+                // In real implementation, you would submit the form via AJAX
+                setTimeout(() => {
+                    document.getElementById('form-success').style.display = 'none';
+                }, 5000);
+            }
+        });
+        
+        // Phone number input formatting
+        document.getElementById('phone').addEventListener('input', function(e) {
+            const x = e.target.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '') + (x[4] ? '-' + x[4] : '');
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+        
+        // Directions link
+        document.getElementById('directions-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Redirecting to Google Maps with our location');
+            // In actual implementation, this would open Google Maps with the hotel's coordinates
+        });
+    </script>
+</body>
+</html>

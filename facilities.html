@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Facilities | MAWIZ Suites - Luxury Hotel Accommodations</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #8b5a2b; /* Warm brown */
+        --secondary-color: #d4af37; /* Gold */
+        --dark-color: #1a1a1a;
+        --light-color: #f8f8f8;
+        --accent-color: #5d4037; /* Dark brown */
+        --text-color: #333333;
+        --white: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background: var(--white);
+        overflow-x: hidden;
+      }
+
+      .container {
+        width: 85%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        color: var(--dark-color);
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--primary-color);
+        transition: all 0.3s ease;
+      }
+
+      a:hover {
+        color: var(--secondary-color);
+      }
+
+      /* Header Styles */
+      header {
+        background: var(--white);
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        padding: 15px 0;
+        transition: all 0.3s ease;
+      }
+
+      header.scrolled {
+        padding: 10px 0;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      #branding h1 {
+        font-size: 2rem;
+        margin: 0;
+        letter-spacing: 1px;
+      }
+
+      .highlight {
+        color: var(--primary-color);
+      }
+
+      nav ul {
+        display: flex;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin-left: 25px;
+        position: relative;
+      }
+
+      nav ul li a {
+        color: var(--dark-color);
+        font-weight: 600;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+      }
+
+      nav ul li.current a {
+        color: var(--primary-color);
+      }
+
+      nav ul li a:hover {
+        color: var(--primary-color);
+      }
+
+      nav ul li.current::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--secondary-color);
+      }
+
+      .booking-btn {
+        background: var(--primary-color);
+        color: var(--white);
+        padding: 12px 25px;
+        border-radius: 4px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .booking-btn:hover {
+        background: var(--accent-color);
+        color: var(--white);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(139, 90, 43, 0.3);
+      }
+
+      /* Facilities Hero Section */
+      #facilities-hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80")
+            no-repeat center center/cover;
+        height: 60vh;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: var(--white);
+        padding-top: 100px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #facilities-hero::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to top, var(--white), transparent);
+        z-index: 1;
+      }
+
+      #facilities-hero .container {
+        position: relative;
+        z-index: 2;
+      }
+
+      #facilities-hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        color: var(--white);
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        animation: fadeInUp 1s ease;
+      }
+
+      #facilities-hero p {
+        font-size: 1.3rem;
+        max-width: 700px;
+        margin: 0 auto 30px;
+        color: rgba(255, 255, 255, 0.9);
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        animation: fadeInUp 1s ease 0.2s forwards;
+        opacity: 0;
+      }
+
+      /* Facilities Overview */
+      #facilities-overview {
+        padding: 100px 0;
+        position: relative;
+      }
+
+      #facilities-overview::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to bottom, var(--white), transparent);
+        z-index: 1;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .section-header h2 {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+      }
+
+      .section-header p {
+        max-width: 700px;
+        margin: 0 auto;
+        color: #666;
+        font-size: 1.1rem;
+      }
+
+      /* Wellness Section */
+      #wellness {
+        padding: 100px 0;
+        background: var(--light-color);
+      }
+
+      .wellness-container {
+        display: flex;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .wellness-content {
+        flex: 1;
+      }
+
+      .wellness-content h2 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        color: var(--primary-color);
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .wellness-content h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: var(--secondary-color);
+      }
+
+      .wellness-content p {
+        margin-bottom: 20px;
+        color: #666;
+        line-height: 1.7;
+      }
+
+      .wellness-features {
+        margin: 30px 0;
+      }
+
+      .wellness-feature {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+
+      .wellness-feature i {
+        color: var(--secondary-color);
+        font-size: 1.2rem;
+        margin-top: 3px;
+      }
+
+      .wellness-image {
+        flex: 1;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .wellness-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+
+      .wellness-image:hover img {
+        transform: scale(1.03);
+      }
+
+      /* Spa Services */
+      #spa-services {
+        padding: 100px 0;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .service-card {
+        background: var(--white);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .service-image {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .service-card:hover .service-image img {
+        transform: scale(1.05);
+      }
+
+      .service-content {
+        padding: 25px;
+      }
+
+      .service-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: var(--primary-color);
+      }
+
+      .service-duration {
+        color: var(--secondary-color);
+        font-weight: 600;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .service-duration i {
+        font-size: 1rem;
+      }
+
+      .service-description {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 15px;
+      }
+
+      .service-price {
+        color: var(--dark-color);
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+
+      /* Fitness Center */
+      #fitness-center {
+        padding: 100px 0;
+        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+          url("https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80")
+            no-repeat center center/cover;
+        color: var(--white);
+        text-align: center;
+      }
+
+      .fitness-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .fitness-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        color: var(--white);
+      }
+
+      .fitness-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin: 50px 0;
+      }
+
+      .fitness-feature {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        padding: 30px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .fitness-feature:hover {
+        background: rgba(212, 175, 55, 0.2);
+        transform: translateY(-5px);
+      }
+
+      .fitness-feature i {
+        font-size: 2rem;
+        color: var(--secondary-color);
+        margin-bottom: 15px;
+      }
+
+      .fitness-feature h3 {
+        color: var(--white);
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+      }
+
+      /* Pool Area */
+      #pool-area {
+        padding: 100px 0;
+      }
+
+      .pool-container {
+        display: flex;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .pool-image {
+        flex: 1;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .pool-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+
+      .pool-image:hover img {
+        transform: scale(1.03);
+      }
+
+      .pool-content {
+        flex: 1;
+      }
+
+      .pool-content h2 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        color: var(--primary-color);
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .pool-content h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: var(--secondary-color);
+      }
+
+      .pool-content p {
+        margin-bottom: 20px;
+        color: #666;
+        line-height: 1.7;
+      }
+
+      .pool-features {
+        margin: 30px 0;
+      }
+
+      .pool-feature {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+
+      .pool-feature i {
+        color: var(--secondary-color);
+        font-size: 1.2rem;
+        margin-top: 3px;
+      }
+
+      /* Business Facilities */
+      #business-facilities {
+        padding: 100px 0;
+        background: var(--light-color);
+      }
+
+      .business-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+      }
+
+      .business-card {
+        background: var(--white);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+      }
+
+      .business-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .business-image {
+        height: 250px;
+        overflow: hidden;
+      }
+
+      .business-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .business-card:hover .business-image img {
+        transform: scale(1.05);
+      }
+
+      .business-content {
+        padding: 30px;
+      }
+
+      .business-content h3 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        color: var(--primary-color);
+      }
+
+      .business-description {
+        margin-bottom: 25px;
+        color: #666;
+        line-height: 1.7;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--dark-color);
+        color: var(--white);
+        padding: 80px 0 0;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 50px;
+        margin-bottom: 60px;
+      }
+
+      .footer-section h3 {
+        color: var(--secondary-color);
+        margin-bottom: 25px;
+        font-size: 1.4rem;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-section h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background: var(--secondary-color);
+      }
+
+      .footer-section p,
+      .footer-section li {
+        margin-bottom: 15px;
+        color: #ccc;
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      .footer-section ul li {
+        list-style: none;
+        transition: all 0.3s ease;
+      }
+
+      .footer-section ul li:hover {
+        transform: translateX(5px);
+      }
+
+      .footer-section ul li a {
+        color: #ccc;
+        display: block;
+        padding: 5px 0;
+      }
+
+      .footer-section ul li a:hover {
+        color: var(--secondary-color);
+      }
+
+      .footer-section .social-icons {
+        margin-top: 25px;
+        display: flex;
+        gap: 15px;
+      }
+
+      .footer-section .social-icons a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: var(--white);
+        transition: all 0.3s ease;
+      }
+
+      .footer-section .social-icons a:hover {
+        background: var(--secondary-color);
+        color: var(--dark-color);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 25px 0;
+        text-align: center;
+        color: #999;
+        font-size: 0.9rem;
+      }
+
+      .footer-bottom a {
+        color: #ccc;
+        transition: all 0.3s ease;
+      }
+
+      .footer-bottom a:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .container {
+          width: 90%;
+        }
+      }
+
+      @media (max-width: 992px) {
+        #facilities-hero {
+          height: 50vh;
+          min-height: 400px;
+        }
+
+        #facilities-hero h1 {
+          font-size: 3rem;
+        }
+
+        .wellness-container,
+        .pool-container {
+          flex-direction: column;
+        }
+
+        .wellness-image,
+        .wellness-content,
+        .pool-image,
+        .pool-content {
+          flex: none;
+          width: 100%;
+        }
+
+        .wellness-image,
+        .pool-image {
+          margin-bottom: 40px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        header {
+          padding: 12px 0;
+        }
+
+        #branding h1 {
+          font-size: 1.8rem;
+        }
+
+        nav ul li {
+          margin-left: 15px;
+        }
+
+        .booking-btn {
+          padding: 10px 18px;
+          font-size: 0.9rem;
+        }
+
+        #facilities-hero h1 {
+          font-size: 2.5rem;
+        }
+
+        #facilities-hero p {
+          font-size: 1.1rem;
+        }
+
+        .business-grid {
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+      }
+
+      @media (max-width: 576px) {
+        #facilities-hero {
+          height: 60vh;
+          min-height: 350px;
+        }
+
+        #facilities-hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .section-header h2 {
+          font-size: 2rem;
+        }
+
+        .fitness-features {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">MAWIZ</span> Suites</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="rooms.html">Rooms & Suites</a></li>
+            <li><a href="dining.html">Dining</a></li>
+            <li class="current"><a href="facilities.html">Facilities</a></li>
+            <li><a href="contactus.html">Contact</a></li>
+            <li><a href="login.html" class="booking-btn">Book Now</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Facilities Hero Section -->
+    <section id="facilities-hero">
+      <div class="container">
+        <h1>World-Class Facilities</h1>
+        <p>
+          Discover our exceptional amenities designed to enhance your stay and
+          create unforgettable experiences
+        </p>
+      </div>
+    </section>
+
+    <!-- Facilities Overview -->
+    <section id="facilities-overview">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Facilities</h2>
+          <p>
+            At MAWIZ Suites, we offer an array of premium facilities to ensure
+            your stay is as comfortable and enjoyable as possible. From
+            rejuvenating spa treatments to state-of-the-art fitness equipment,
+            we have everything you need.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wellness Section -->
+    <section id="wellness">
+      <div class="container">
+        <div class="wellness-container">
+          <div class="wellness-content">
+            <h2>Wellness & Spa</h2>
+            <p>
+              Our award-winning spa offers a sanctuary of relaxation and
+              rejuvenation. Inspired by ancient healing traditions and modern
+              techniques, our treatments are designed to restore balance to both
+              body and mind.
+            </p>
+
+            <div class="wellness-features">
+              <div class="wellness-feature">
+                <i class="fas fa-spa"></i>
+                <div>
+                  <h3>Holistic Treatments</h3>
+                  <p>Customized therapies using premium organic products</p>
+                </div>
+              </div>
+
+              <div class="wellness-feature">
+                <i class="fas fa-hot-tub"></i>
+                <div>
+                  <h3>Thermal Experiences</h3>
+                  <p>Sauna, steam room, and hydrotherapy pools</p>
+                </div>
+              </div>
+
+              <div class="wellness-feature">
+                <i class="fas fa-user-md"></i>
+                <div>
+                  <h3>Expert Therapists</h3>
+                  <p>Highly trained professionals for personalized care</p>
+                </div>
+              </div>
+            </div>
+
+            <a href="spa-menu.html" class="button_1">View Spa Menu</a>
+          </div>
+
+          <div class="wellness-image">
+            <img
+              src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="MAWIZ Spa"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spa Services -->
+    <section id="spa-services">
+      <div class="container">
+        <div class="section-header">
+          <h2>Signature Spa Services</h2>
+          <p>
+            Indulge in our curated selection of treatments designed to relax,
+            rejuvenate, and restore
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-image">
+              <img
+                src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="MAWIZ Signature Massage"
+              />
+            </div>
+            <div class="service-content">
+              <h3>MAWIZ Signature Massage</h3>
+              <div class="service-duration">
+                <i class="far fa-clock"></i> 90 minutes
+              </div>
+              <p class="service-description">
+                A bespoke massage combining Swedish, deep tissue, and
+                aromatherapy techniques tailored to your specific needs.
+              </p>
+              <div class="service-price">$175</div>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-image">
+              <img
+                src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="24K Gold Facial"
+              />
+            </div>
+            <div class="service-content">
+              <h3>24K Gold Facial</h3>
+              <div class="service-duration">
+                <i class="far fa-clock"></i> 60 minutes
+              </div>
+              <p class="service-description">
+                A luxurious anti-aging treatment featuring real gold leaf to
+                brighten, firm, and revitalize your complexion.
+              </p>
+              <div class="service-price">$150</div>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-image">
+              <img
+                src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Detox Body Wrap"
+              />
+            </div>
+            <div class="service-content">
+              <h3>Detox Body Wrap</h3>
+              <div class="service-duration">
+                <i class="far fa-clock"></i> 75 minutes
+              </div>
+              <p class="service-description">
+                A full-body treatment using mineral-rich seaweed to detoxify,
+                hydrate, and improve skin texture.
+              </p>
+              <div class="service-price">$135</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fitness Center -->
+    <section id="fitness-center">
+      <div class="container">
+        <div class="fitness-content">
+          <h2>State-of-the-Art Fitness Center</h2>
+          <p>
+            Our 24-hour fitness center features premium equipment and
+            personalized training options to maintain your wellness routine
+            during your stay.
+          </p>
+
+          <div class="fitness-features">
+            <div class="fitness-feature">
+              <i class="fas fa-dumbbell"></i>
+              <h3>Cardio Equipment</h3>
+              <p>
+                Latest generation treadmills, ellipticals, and bikes with
+                personal screens
+              </p>
+            </div>
+
+            <div class="fitness-feature">
+              <i class="fas fa-weight"></i>
+              <h3>Strength Training</h3>
+              <p>Complete range of free weights and resistance machines</p>
+            </div>
+
+            <div class="fitness-feature">
+              <i class="fas fa-calendar-alt"></i>
+              <h3>Group Classes</h3>
+              <p>
+                Daily yoga, Pilates, and HIIT sessions with expert instructors
+              </p>
+            </div>
+
+            <div class="fitness-feature">
+              <i class="fas fa-user-tie"></i>
+              <h3>Personal Training</h3>
+              <p>Customized sessions available upon request</p>
+            </div>
+          </div>
+
+          <a href="fitness-schedule.html" class="button_1"
+            >View Class Schedule</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Pool Area -->
+    <section id="pool-area">
+      <div class="container">
+        <div class="pool-container">
+          <div class="pool-image">
+            <img
+              src="https://images.unsplash.com/photo-1575429976786-034c1552b6fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="Infinity Pool"
+            />
+          </div>
+
+          <div class="pool-content">
+            <h2>Infinity Pool & Sundeck</h2>
+            <p>
+              Our stunning rooftop infinity pool offers panoramic city views and
+              a tranquil atmosphere for relaxation. Enjoy poolside service with
+              refreshing drinks and light bites throughout the day.
+            </p>
+
+            <div class="pool-features">
+              <div class="pool-feature">
+                <i class="fas fa-swimming-pool"></i>
+                <div>
+                  <h3>Heated Infinity Pool</h3>
+                  <p>Year-round swimming with breathtaking views</p>
+                </div>
+              </div>
+
+              <div class="pool-feature">
+                <i class="fas fa-umbrella-beach"></i>
+                <div>
+                  <h3>Luxury Cabanas</h3>
+                  <p>Private retreats with butler service available</p>
+                </div>
+              </div>
+
+              <div class="pool-feature">
+                <i class="fas fa-cocktail"></i>
+                <div>
+                  <h3>Poolside Bar</h3>
+                  <p>Signature cocktails and light refreshments</p>
+                </div>
+              </div>
+            </div>
+
+            <a href="pool-services.html" class="button_1"
+              >Explore Pool Services</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Business Facilities -->
+    <section id="business-facilities">
+      <div class="container">
+        <div class="section-header">
+          <h2>Business Facilities</h2>
+          <p>
+            For our corporate guests, we offer comprehensive business amenities
+            to ensure productive stays
+          </p>
+        </div>
+
+        <div class="business-grid">
+          <div class="business-card">
+            <div class="business-image">
+              <img
+                src="https://images.unsplash.com/photo-1568219656418-15c329312bf1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Business Center"
+              />
+            </div>
+            <div class="business-content">
+              <h3>Business Center</h3>
+              <p class="business-description">
+                Our 24-hour business center provides computers, printers, and
+                secretarial services to meet all your professional needs during
+                your stay.
+              </p>
+              <a href="business-center.html" class="button_1">Learn More</a>
+            </div>
+          </div>
+
+          <div class="business-card">
+            <div class="business-image">
+              <img
+                src="https://images.unsplash.com/photo-1564069114553-7215e1ff1890?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Meeting Rooms"
+              />
+            </div>
+            <div class="business-content">
+              <h3>Meeting Rooms</h3>
+              <p class="business-description">
+                Flexible meeting spaces equipped with state-of-the-art
+                technology for presentations, conferences, and corporate events.
+              </p>
+              <a href="meeting-rooms.html" class="button_1">Learn More</a>
+            </div>
+          </div>
+
+          <div class="business-card">
+            <div class="business-image">
+              <img
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Event Spaces"
+              />
+            </div>
+            <div class="business-content">
+              <h3>Event Spaces</h3>
+              <p class="business-description">
+                Elegant venues for corporate functions, product launches, and
+                networking events with full catering services available.
+              </p>
+              <a href="event-spaces.html" class="button_1">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>MAWIZ Suites</h3>
+            <p>
+              123 Luxury Avenue<br />City Center, 10001<br />Phone: +1 (555)
+              123-4567<br />Email: info@mawizsuites.com
+            </p>
+            <div class="social-icons">
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="homepage.html">Home</a></li>
+              <li><a href="rooms.html">Rooms & Suites</a></li>
+              <li><a href="dining.html">Dining</a></li>
+              <li class="current"><a href="facilities.html">Facilities</a></li>
+              <li><a href="contactus.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Facilities</h3>
+            <ul>
+              <li><a href="spa.html">Spa & Wellness</a></li>
+              <li><a href="fitness.html">Fitness Center</a></li>
+              <li><a href="pool.html">Infinity Pool</a></li>
+              <li><a href="business.html">Business Center</a></li>
+              <li><a href="events.html">Event Spaces</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Newsletter</h3>
+            <p>Subscribe to receive exclusive offers and updates</p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Your email address" />
+              <button type="submit" class="button_1">Subscribe</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2023 MAWIZ Suites. All Rights Reserved. |
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="terms.html">Terms of Service</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Header scroll effect
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        header.classList.toggle("scrolled", window.scrollY > 50);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dining | MAWIZ Suites - Luxury Hotel Accommodations</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #8b5a2b; /* Warm brown */
+        --secondary-color: #d4af37; /* Gold */
+        --dark-color: #1a1a1a;
+        --light-color: #f8f8f8;
+        --accent-color: #5d4037; /* Dark brown */
+        --text-color: #333333;
+        --white: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background: var(--white);
+        overflow-x: hidden;
+      }
+
+      .container {
+        width: 85%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        color: var(--dark-color);
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--primary-color);
+        transition: all 0.3s ease;
+      }
+
+      a:hover {
+        color: var(--secondary-color);
+      }
+
+      /* Header Styles */
+      header {
+        background: var(--white);
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        padding: 15px 0;
+        transition: all 0.3s ease;
+      }
+
+      header.scrolled {
+        padding: 10px 0;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      #branding h1 {
+        font-size: 2rem;
+        margin: 0;
+        letter-spacing: 1px;
+      }
+
+      .highlight {
+        color: var(--primary-color);
+      }
+
+      nav ul {
+        display: flex;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin-left: 25px;
+        position: relative;
+      }
+
+      nav ul li a {
+        color: var(--dark-color);
+        font-weight: 600;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+      }
+
+      nav ul li.current a {
+        color: var(--primary-color);
+      }
+
+      nav ul li a:hover {
+        color: var(--primary-color);
+      }
+
+      nav ul li.current::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--secondary-color);
+      }
+
+      .booking-btn {
+        background: var(--primary-color);
+        color: var(--white);
+        padding: 12px 25px;
+        border-radius: 4px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .booking-btn:hover {
+        background: var(--accent-color);
+        color: var(--white);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(139, 90, 43, 0.3);
+      }
+
+      /* Dining Hero Section */
+      #dining-hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80")
+            no-repeat center center/cover;
+        height: 60vh;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: var(--white);
+        padding-top: 100px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #dining-hero::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to top, var(--white), transparent);
+        z-index: 1;
+      }
+
+      #dining-hero .container {
+        position: relative;
+        z-index: 2;
+      }
+
+      #dining-hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        color: var(--white);
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        animation: fadeInUp 1s ease;
+      }
+
+      #dining-hero p {
+        font-size: 1.3rem;
+        max-width: 700px;
+        margin: 0 auto 30px;
+        color: rgba(255, 255, 255, 0.9);
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        animation: fadeInUp 1s ease 0.2s forwards;
+        opacity: 0;
+      }
+
+      /* Restaurants Section */
+      #restaurants {
+        padding: 100px 0;
+        position: relative;
+      }
+
+      #restaurants::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to bottom, var(--white), transparent);
+        z-index: 1;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .section-header h2 {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+      }
+
+      .section-header p {
+        max-width: 700px;
+        margin: 0 auto;
+        color: #666;
+        font-size: 1.1rem;
+      }
+
+      .restaurant-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .restaurant-card {
+        background: var(--white);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+      }
+
+      .restaurant-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .restaurant-image {
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .restaurant-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .restaurant-card:hover .restaurant-image img {
+        transform: scale(1.05);
+      }
+
+      .restaurant-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: var(--secondary-color);
+        color: var(--dark-color);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .restaurant-content {
+        padding: 30px;
+      }
+
+      .restaurant-content h3 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        color: var(--primary-color);
+      }
+
+      .restaurant-cuisine {
+        font-size: 1rem;
+        color: var(--secondary-color);
+        font-weight: 600;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .restaurant-cuisine i {
+        font-size: 1.2rem;
+      }
+
+      .restaurant-hours {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .restaurant-hour {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      .restaurant-hour i {
+        color: var(--secondary-color);
+      }
+
+      .restaurant-description {
+        margin-bottom: 25px;
+        color: #666;
+        line-height: 1.7;
+      }
+
+      .restaurant-cta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .button_1 {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 25px;
+        background: var(--primary-color);
+        color: var(--white);
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .button_1:hover {
+        background: var(--accent-color);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(139, 90, 43, 0.3);
+      }
+
+      .button_1 i {
+        margin-left: 8px;
+        transition: transform 0.3s ease;
+      }
+
+      .button_1:hover i {
+        transform: translateX(5px);
+      }
+
+      .view-menu {
+        color: var(--primary-color);
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .view-menu:hover {
+        color: var(--secondary-color);
+        transform: translateX(5px);
+      }
+
+      /* Signature Dishes */
+      #signature-dishes {
+        padding: 100px 0;
+        background: var(--light-color);
+      }
+
+      .dishes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .dish-card {
+        background: var(--white);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .dish-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .dish-image {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .dish-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .dish-card:hover .dish-image img {
+        transform: scale(1.05);
+      }
+
+      .dish-content {
+        padding: 25px;
+      }
+
+      .dish-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: var(--primary-color);
+      }
+
+      .dish-price {
+        color: var(--secondary-color);
+        font-weight: 700;
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+
+      .dish-description {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 15px;
+      }
+
+      .dish-restaurant {
+        color: #888;
+        font-size: 0.9rem;
+        font-style: italic;
+      }
+
+      /* Dining Experience */
+      #dining-experience {
+        padding: 100px 0;
+        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+          url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80")
+            no-repeat center center/cover;
+        color: var(--white);
+        text-align: center;
+      }
+
+      .experience-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .experience-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        color: var(--white);
+      }
+
+      .experience-content p {
+        margin-bottom: 30px;
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
+
+      /* Private Dining */
+      #private-dining {
+        padding: 100px 0;
+      }
+
+      .private-dining-container {
+        display: flex;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .private-dining-image {
+        flex: 1;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .private-dining-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+
+      .private-dining-image:hover img {
+        transform: scale(1.03);
+      }
+
+      .private-dining-content {
+        flex: 1;
+      }
+
+      .private-dining-content h2 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        color: var(--primary-color);
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .private-dining-content h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: var(--secondary-color);
+      }
+
+      .private-dining-content p {
+        margin-bottom: 20px;
+        color: #666;
+        line-height: 1.7;
+      }
+
+      .private-dining-features {
+        margin: 30px 0;
+      }
+
+      .private-dining-feature {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+
+      .private-dining-feature i {
+        color: var(--secondary-color);
+        font-size: 1.2rem;
+        margin-top: 3px;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--dark-color);
+        color: var(--white);
+        padding: 80px 0 0;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 50px;
+        margin-bottom: 60px;
+      }
+
+      .footer-section h3 {
+        color: var(--secondary-color);
+        margin-bottom: 25px;
+        font-size: 1.4rem;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-section h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background: var(--secondary-color);
+      }
+
+      .footer-section p,
+      .footer-section li {
+        margin-bottom: 15px;
+        color: #ccc;
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      .footer-section ul li {
+        list-style: none;
+        transition: all 0.3s ease;
+      }
+
+      .footer-section ul li:hover {
+        transform: translateX(5px);
+      }
+
+      .footer-section ul li a {
+        color: #ccc;
+        display: block;
+        padding: 5px 0;
+      }
+
+      .footer-section ul li a:hover {
+        color: var(--secondary-color);
+      }
+
+      .footer-section .social-icons {
+        margin-top: 25px;
+        display: flex;
+        gap: 15px;
+      }
+
+      .footer-section .social-icons a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: var(--white);
+        transition: all 0.3s ease;
+      }
+
+      .footer-section .social-icons a:hover {
+        background: var(--secondary-color);
+        color: var(--dark-color);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 25px 0;
+        text-align: center;
+        color: #999;
+        font-size: 0.9rem;
+      }
+
+      .footer-bottom a {
+        color: #ccc;
+        transition: all 0.3s ease;
+      }
+
+      .footer-bottom a:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .container {
+          width: 90%;
+        }
+      }
+
+      @media (max-width: 992px) {
+        #dining-hero {
+          height: 50vh;
+          min-height: 400px;
+        }
+
+        #dining-hero h1 {
+          font-size: 3rem;
+        }
+
+        .private-dining-container {
+          flex-direction: column;
+        }
+
+        .private-dining-image,
+        .private-dining-content {
+          flex: none;
+          width: 100%;
+        }
+
+        .private-dining-image {
+          margin-bottom: 40px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        header {
+          padding: 12px 0;
+        }
+
+        #branding h1 {
+          font-size: 1.8rem;
+        }
+
+        nav ul li {
+          margin-left: 15px;
+        }
+
+        .booking-btn {
+          padding: 10px 18px;
+          font-size: 0.9rem;
+        }
+
+        #dining-hero h1 {
+          font-size: 2.5rem;
+        }
+
+        #dining-hero p {
+          font-size: 1.1rem;
+        }
+
+        .restaurant-grid {
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+      }
+
+      @media (max-width: 576px) {
+        #dining-hero {
+          height: 60vh;
+          min-height: 350px;
+        }
+
+        #dining-hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .section-header h2 {
+          font-size: 2rem;
+        }
+
+        .restaurant-cta {
+          flex-direction: column;
+          gap: 15px;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">MAWIZ</span> Suites</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="rooms.html">Rooms & Suites</a></li>
+            <li class="current"><a href="dining.html">Dining</a></li>
+            <li><a href="facilities.html">Facilities</a></li>
+            <li><a href="contactus.html">Contact</a></li>
+            <li><a href="login.html" class="booking-btn">Book Now</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Dining Hero Section -->
+    <section id="dining-hero">
+      <div class="container">
+        <h1>Culinary Excellence</h1>
+        <p>
+          Discover world-class dining experiences crafted by our award-winning
+          chefs using the finest local ingredients
+        </p>
+      </div>
+    </section>
+
+    <!-- Restaurants Section -->
+    <section id="restaurants">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Restaurants</h2>
+          <p>
+            From fine dining to casual fare, our diverse culinary offerings
+            cater to every palate and occasion.
+          </p>
+        </div>
+
+        <div class="restaurant-grid">
+          <!-- The Terrace -->
+          <div class="restaurant-card">
+            <div class="restaurant-image">
+              <img
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="The Terrace Restaurant"
+              />
+              <div class="restaurant-badge">Signature</div>
+            </div>
+            <div class="restaurant-content">
+              <h3>The Terrace</h3>
+              <div class="restaurant-cuisine">
+                <i class="fas fa-utensils"></i> Modern International
+              </div>
+
+              <div class="restaurant-hours">
+                <div class="restaurant-hour">
+                  <i class="far fa-clock"></i> Breakfast: 7AM-11AM
+                </div>
+                <div class="restaurant-hour">
+                  <i class="far fa-clock"></i> Dinner: 6PM-11PM
+                </div>
+              </div>
+
+              <p class="restaurant-description">
+                Our flagship restaurant offers a sophisticated dining experience
+                with panoramic city views. Chef Marco's seasonal menu highlights
+                the finest local ingredients with international flair.
+              </p>
+
+              <div class="restaurant-cta">
+                <a href="the-terrace-menu.pdf" class="view-menu">
+                  View Menu <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="reservations.html" class="button_1">Reserve Table</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Spice Route -->
+          <div class="restaurant-card">
+            <div class="restaurant-image">
+              <img
+                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Spice Route Restaurant"
+              />
+            </div>
+            <div class="restaurant-content">
+              <h3>Spice Route</h3>
+              <div class="restaurant-cuisine">
+                <i class="fas fa-pepper-hot"></i> Asian Fusion
+              </div>
+
+              <div class="restaurant-hours">
+                <div class="restaurant-hour">
+                  <i class="far fa-clock"></i> Lunch: 12PM-3PM
+                </div>
+                <div class="restaurant-hour">
+                  <i class="far fa-clock"></i> Dinner: 6PM-11PM
+                </div>
+              </div>
+
+              <p class="restaurant-description">
+                Embark on a culinary journey through Asia with our innovative
+                dishes blending traditional flavors with contemporary
+                techniques. Featuring live cooking stations and an extensive
+                sake selection.
+              </p>
+
+              <div class="restaurant-cta">
+                <a href="spice-route-menu.pdf" class="view-menu">
+                  View Menu <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="reservations.html" class="button_1">Reserve Table</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- La Piscina -->
+          <div class="restaurant-card">
+            <div class="restaurant-image">
+              <img
+                src="https://images.unsplash.com/photo-1578474846511-04ba529f0b88?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="La Piscina Restaurant"
+              />
+              <div class="restaurant-badge">Poolside</div>
+            </div>
+            <div class="restaurant-content">
+              <h3>La Piscina</h3>
+              <div class="restaurant-cuisine">
+                <i class="fas fa-umbrella-beach"></i> Mediterranean
+              </div>
+
+              <div class="restaurant-hours">
+                <div class="restaurant-hour">
+                  <i class="far fa-clock"></i> All Day: 11AM-9PM
+                </div>
+              </div>
+
+              <p class="restaurant-description">
+                Our casual poolside eatery serves fresh Mediterranean-inspired
+                dishes, artisanal cocktails, and an extensive wine list. Perfect
+                for a relaxed lunch or sunset dining.
+              </p>
+
+              <div class="restaurant-cta">
+                <a href="la-piscina-menu.pdf" class="view-menu">
+                  View Menu <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="reservations.html" class="button_1">Reserve Table</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Signature Dishes -->
+    <section id="signature-dishes">
+      <div class="container">
+        <div class="section-header">
+          <h2>Signature Dishes</h2>
+          <p>
+            Experience the culinary artistry of our chefs with these exclusive
+            creations available across our restaurants.
+          </p>
+        </div>
+
+        <div class="dishes-grid">
+          <div class="dish-card">
+            <div class="dish-image">
+              <img
+                src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Truffle Risotto"
+              />
+            </div>
+            <div class="dish-content">
+              <h3>Truffle Risotto</h3>
+              <div class="dish-price">$32</div>
+              <p class="dish-description">
+                Creamy Arborio rice with seasonal black truffle, wild mushrooms,
+                and Parmigiano-Reggiano. Finished with truffle oil and
+                microgreens.
+              </p>
+              <p class="dish-restaurant">Available at The Terrace</p>
+            </div>
+          </div>
+
+          <div class="dish-card">
+            <div class="dish-image">
+              <img
+                src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Miso Black Cod"
+              />
+            </div>
+            <div class="dish-content">
+              <h3>Miso Black Cod</h3>
+              <div class="dish-price">$38</div>
+              <p class="dish-description">
+                Marinated for 48 hours in sweet white miso, then perfectly
+                grilled. Served with baby bok choy and wasabi mashed potatoes.
+              </p>
+              <p class="dish-restaurant">Available at Spice Route</p>
+            </div>
+          </div>
+
+          <div class="dish-card">
+            <div class="dish-image">
+              <img
+                src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Lobster Thermidor"
+              />
+            </div>
+            <div class="dish-content">
+              <h3>Lobster Thermidor</h3>
+              <div class="dish-price">$42</div>
+              <p class="dish-description">
+                Maine lobster baked with a creamy brandy sauce, gruyère cheese,
+                and herb breadcrumbs. Served with asparagus tips.
+              </p>
+              <p class="dish-restaurant">Available at The Terrace</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dining Experience -->
+    <section id="dining-experience">
+      <div class="container">
+        <div class="experience-content">
+          <h2>Unforgettable Dining Experiences</h2>
+          <p>
+            At MAWIZ Suites, we believe dining should be an event to remember.
+            From chef's table experiences to wine pairing dinners, our culinary
+            team creates bespoke dining journeys tailored to your preferences.
+          </p>
+          <a href="experiences.html" class="button_1">Explore Experiences</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Private Dining -->
+    <section id="private-dining">
+      <div class="container">
+        <div class="private-dining-container">
+          <div class="private-dining-image">
+            <img
+              src="https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="Private Dining Room"
+            />
+          </div>
+          <div class="private-dining-content">
+            <h2>Private Dining</h2>
+            <p>
+              Host your special occasion in one of our elegant private dining
+              rooms, each offering a unique ambiance and personalized service.
+            </p>
+
+            <div class="private-dining-features">
+              <div class="private-dining-feature">
+                <i class="fas fa-wine-glass-alt"></i>
+                <div>
+                  <h3>Custom Menus</h3>
+                  <p>
+                    Work with our chefs to create a personalized menu for your
+                    event
+                  </p>
+                </div>
+              </div>
+
+              <div class="private-dining-feature">
+                <i class="fas fa-users"></i>
+                <div>
+                  <h3>Flexible Capacity</h3>
+                  <p>
+                    Spaces available for intimate gatherings of 10 to grand
+                    events of 100
+                  </p>
+                </div>
+              </div>
+
+              <div class="private-dining-feature">
+                <i class="fas fa-concierge-bell"></i>
+                <div>
+                  <h3>Dedicated Staff</h3>
+                  <p>
+                    Professional service team exclusively attending to your
+                    party
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <a href="private-dining.html" class="button_1">Plan Your Event</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>MAWIZ Suites</h3>
+            <p>
+              123 Luxury Avenue<br />City Center, 10001<br />Phone: +1 (555)
+              123-4567<br />Email: info@mawizsuites.com
+            </p>
+            <div class="social-icons">
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="homepage.html">Home</a></li>
+              <li><a href="rooms.html">Rooms & Suites</a></li>
+              <li class="current"><a href="dining.html">Dining</a></li>
+              <li><a href="facilities.html">Facilities</a></li>
+              <li><a href="contactus.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Dining</h3>
+            <ul>
+              <li><a href="the-terrace.html">The Terrace</a></li>
+              <li><a href="spice-route.html">Spice Route</a></li>
+              <li><a href="la-piscina.html">La Piscina</a></li>
+              <li><a href="room-service.html">24/7 Room Service</a></li>
+              <li><a href="special-events.html">Special Events</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Newsletter</h3>
+            <p>Subscribe to receive exclusive dining offers and updates</p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Your email address" />
+              <button type="submit" class="button_1">Subscribe</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2023 MAWIZ Suites. All Rights Reserved. |
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="terms.html">Terms of Service</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Header scroll effect
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        header.classList.toggle("scrolled", window.scrollY > 50);
+      });
+    </script>
+  </body>
+</html>
