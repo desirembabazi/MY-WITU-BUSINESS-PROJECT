@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms & Suites | MAWIZ Suites - Luxury Hotel Accommodations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B5A2B; /* Warm brown */
+            --secondary-color: #D4AF37; /* Gold */
+            --dark-color: #1A1A1A;
+            --light-color: #F8F8F8;
+            --accent-color: #5D4037; /* Dark brown */
+            --text-color: #333333;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        #branding h1 {
+            font-size: 2rem;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--dark-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        nav ul li.current a {
+            color: var(--primary-color);
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        nav ul li.current::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+
+        .booking-btn {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .booking-btn:hover {
+            background: var(--accent-color);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 90, 43, 0.3);
+        }
+
+        /* Rooms Hero Section */
+        #rooms-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1566669437685-5f63f8a6d2a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 60vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #rooms-hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, var(--white), transparent);
+            z-index: 1;
+        }
+
+        #rooms-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        #rooms-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease;
+        }
+
+        #rooms-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        /* Room Categories */
+        #room-categories {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        #room-categories::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, var(--white), transparent);
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .room-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .room-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .room-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .room-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .room-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .room-card:hover .room-image img {
+            transform: scale(1.05);
+        }
+
+        .room-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .room-content {
+            padding: 30px;
+        }
+
+        .room-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .room-price {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .room-price span {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .room-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .room-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .room-feature i {
+            color: var(--secondary-color);
+        }
+
+        .room-description {
+            margin-bottom: 25px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .room-cta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .button_1 {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .button_1:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 90, 43, 0.3);
+        }
+
+        .button_1 i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .button_1:hover i {
+            transform: translateX(5px);
+        }
+
+        .view-details {
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .view-details:hover {
+            color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+
+        /* Room Amenities Section */
+        #room-amenities {
+            padding: 100px 0;
+            background: var(--light-color);
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .amenity-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .amenity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .amenity-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+        }
+
+        .amenity-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .amenity-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Special Offers */
+        #special-offers {
+            padding: 100px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .offer-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .offer-card h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .offer-card p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .offer-tag {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Testimonials */
+        #testimonials {
+            padding: 100px 0;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scroll-snap-type: x mandatory;
+        }
+
+        .testimonial {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            min-width: 450px;
+            scroll-snap-align: start;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .rating {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .guest-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .guest-info img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .guest-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .guest-info span {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: var(--white);
+            padding: 80px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+
+        .footer-section p, .footer-section li {
+            margin-bottom: 15px;
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .footer-section ul li {
+            list-style: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li:hover {
+            transform: translateX(5px);
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-section .social-icons {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-section .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .footer-section .social-icons a:hover {
+            background: var(--secondary-color);
+            color: var(--dark-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px 0;
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: #ccc;
+            transition: all 0.3s ease;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            #rooms-hero {
+                height: 50vh;
+                min-height: 400px;
+            }
+
+            #rooms-hero h1 {
+                font-size: 3rem;
+            }
+
+            .room-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 0;
+            }
+
+            #branding h1 {
+                font-size: 1.8rem;
+            }
+
+            nav ul li {
+                margin-left: 15px;
+            }
+
+            .booking-btn {
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
+
+            #rooms-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            #rooms-hero p {
+                font-size: 1.1rem;
+            }
+
+            .testimonial {
+                min-width: 350px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            #rooms-hero {
+                height: 60vh;
+                min-height: 350px;
+            }
+
+            #rooms-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .room-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .room-cta {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+
+            .testimonial {
+                min-width: 280px;
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">MAWIZ</span> Suites</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="homepage.html">Home</a></li>
+                    <li class="current"><a href="aboutus.html">Rooms & Suites</a></li>
+                    <li><a href="dining.html">Dining</a></li>
+                    <li><a href="facilities.html">Facilities</a></li>
+                    <li><a href="contactus.html">Contact</a></li>
+                    <li><a href="login.html" class="booking-btn">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Rooms Hero Section -->
+    <section id="rooms-hero">
+        <div class="container">
+            <h1>Our Rooms & Suites</h1>
+            <p>Experience unparalleled luxury in our meticulously designed accommodations, where comfort meets sophistication</p>
+        </div>
+    </section>
+
+    <!-- Room Categories -->
+    <section id="room-categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Luxury Accommodations</h2>
+                <p>Each of our rooms and suites has been thoughtfully designed to provide the ultimate in comfort and style, featuring premium amenities and breathtaking views.</p>
+            </div>
+
+            <div class="room-grid">
+                <!-- Deluxe Room -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1566669437685-5f63f8a6d2a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Deluxe Room">
+                        <div class="room-badge">Most Popular</div>
+                    </div>
+                    <div class="room-content">
+                        <h3>Deluxe Room</h3>
+                        <div class="room-price">$299 <span>/ night</span></div>
+                        
+                        <div class="room-features">
+                            <div class="room-feature">
+                                <i class="fas fa-ruler-combined"></i> 450 sq ft
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-bed"></i> King Bed
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-user-friends"></i> 2 Guests
+                            </div>
+                        </div>
+                        
+                        <p class="room-description">Our Deluxe Rooms offer a perfect blend of comfort and style, featuring premium bedding, a spacious work area, and stunning city views.</p>
+                        
+                        <div class="room-cta">
+                            <a href="deluxe-room.html" class="view-details">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="booking.html" class="button_1">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Executive Suite -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1582719471383-9712df0368f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Executive Suite">
+                    </div>
+                    <div class="room-content">
+                        <h3>Executive Suite</h3>
+                        <div class="room-price">$499 <span>/ night</span></div>
+                        
+                        <div class="room-features">
+                            <div class="room-feature">
+                                <i class="fas fa-ruler-combined"></i> 750 sq ft
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-bed"></i> King Bed
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-user-friends"></i> 2 Guests
+                            </div>
+                        </div>
+                        
+                        <p class="room-description">The Executive Suite features a separate living area, premium amenities, and enhanced services for business travelers and discerning guests.</p>
+                        
+                        <div class="room-cta">
+                            <a href="executive-suite.html" class="view-details">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="booking.html" class="button_1">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Presidential Suite -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Presidential Suite">
+                        <div class="room-badge">Luxury</div>
+                    </div>
+                    <div class="room-content">
+                        <h3>Presidential Suite</h3>
+                        <div class="room-price">$899 <span>/ night</span></div>
+                        
+                        <div class="room-features">
+                            <div class="room-feature">
+                                <i class="fas fa-ruler-combined"></i> 1200 sq ft
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-bed"></i> King Bed
+                            </div>
+                            <div class="room-feature">
+                                <i class="fas fa-user-friends"></i> 4 Guests
+                            </div>
+                        </div>
+                        
+                        <p class="room-description">Our most exclusive accommodation, the Presidential Suite offers unparalleled luxury with a spacious living room, dining area, and panoramic city views.</p>
+                        
+                        <div class="room-cta">
+                            <a href="presidential-suite.html" class="view-details">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="booking.html" class="button_1">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Room Amenities Section -->
+    <section id="room-amenities">
+        <div class="container">
+            <div class="section-header">
+                <h2>Room Amenities</h2>
+                <p>All our accommodations feature premium amenities designed to enhance your stay and provide the ultimate in comfort and convenience.</p>
+            </div>
+
+            <div class="amenities-grid">
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>High-Speed WiFi</h3>
+                    <p>Complimentary high-speed internet access throughout your stay, perfect for both work and entertainment.</p>
+                </div>
+
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3>24/7 Room Service</h3>
+                    <p>Enjoy our gourmet menu available around the clock, delivered directly to your room.</p>
+                </div>
+
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Luxury Toiletries</h3>
+                    <p>Premium bath amenities from top luxury brands for your comfort and pampering.</p>
+                </div>
+
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <h3>Smart TV</h3>
+                    <p>Large flat-screen smart TVs with premium channels and streaming capabilities.</p>
+                </div>
+
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <h3>Premium Coffee</h3>
+                    <p>In-room Nespresso machine with a selection of premium coffee and tea.</p>
+                </div>
+
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <h3>Climate Control</h3>
+                    <p>Individual temperature control to ensure your perfect comfort at all times.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers -->
+    <section id="special-offers">
+        <div class="container">
+            <div class="offer-card">
+                <div class="offer-tag">Special Offer</div>
+                <h2>Stay Longer, Save More</h2>
+                <p>Book a stay of 3 nights or more and receive 15% off your entire reservation, plus complimentary breakfast for two each morning of your stay. Offer valid through December 31, 2023.</p>
+                <a href="booking.html" class="button_1">Book This Offer</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Guest Experiences</h2>
+                <p>Don't just take our word for it - hear what our guests have to say about their stays in our rooms and suites.</p>
+            </div>
+
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The Presidential Suite exceeded all our expectations. The attention to detail was remarkable, from the luxurious bedding to the breathtaking views. We felt truly pampered throughout our stay."</p>
+                    <div class="guest-info">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah J.">
+                        <div>
+                            <h4>Sarah Johnson</h4>
+                            <span>Honeymoon Guest</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"As a frequent business traveler, the Executive Suite provided everything I needed - a comfortable workspace, excellent amenities, and impeccable service. It's now my preferred hotel in the city."</p>
+                    <div class="guest-info">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Michael T.">
+                        <div>
+                            <h4>Michael Thompson</h4>
+                            <span>Business Traveler</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"We stayed in a Deluxe Room for our anniversary weekend and were blown away by the comfort and style. The bed was incredibly comfortable, and the city views were spectacular."</p>
+                    <div class="guest-info">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Emily R.">
+                        <div>
+                            <h4>Emily Rodriguez</h4>
+                            <span>Anniversary Guest</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MAWIZ Suites</h3>
+                    <p>123 Luxury Avenue<br>City Center, 10001<br>Phone: +1 (555) 123-4567<br>Email: info@mawizsuites.com</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="homepage.html">Home</a></li>
+                        <li><a href="aboutus.html">Rooms & Suites</a></li>
+                        <li><a href="dining.html">Dining</a></li>
+                        <li><a href="facilities.html">Facilities</a></li>
+                        <li><a href="contactus.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="offers.html">Special Offers</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive exclusive offers and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit" class="button_1">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 MAWIZ Suites. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+</body>
+</html>

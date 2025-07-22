@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - MAWIZ Suites</title>
+    <link rel="stylesheet" href="signup-style.css" />
+
+    <style>
+
+        /* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ddeeff, #f8f9ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container */
+.signup-wrapper {
+  width: 100%;
+  max-width: 450px;
+  padding: 20px;
+}
+
+.signup-box {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.signup-box h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+/* Form */
+form label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: 500;
+}
+
+form input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2c3e50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1a252f;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+.login-link a {
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="signup-wrapper">
+      <div class="signup-box">
+        <h2>MAWIZ Suites</h2>
+        <p class="subtitle">Create your account to get started</p>
+        <form>
+          <label for="fullname">Full Name</label>
+          <input
+            type="text"
+            id="fullname"
+           
+            required
+          />
+
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            
+            required
+          />
+
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone"  required />
+
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+           
+            required
+          />
+
+          <label for="confirm-password">Confirm Password</label>
+          <input
+            type="password"
+            id="confirm-password"
+            
+            required
+          />
+
+          <button type="submit">Sign Up</button>
+          <p class="login-link">
+            Already have an account? <a href="login.html">Login here</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
